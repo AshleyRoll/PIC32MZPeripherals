@@ -37,7 +37,10 @@ void init()
 
 int main(int, char**) 
 {
+	init();
+
 	LED1::On();
+	// ...
 	LED1::Off();
 
 	while(1) {
@@ -59,7 +62,7 @@ SPI_SCLK::ConfigureAsOutput(false, false);	// make a digital output and low
 
 SPI_SDI::ConfigureAsInput(true);
 SPI_SDI::EnableWeakPullDown();	// weak pull downs to prevent floating and phantom powering the device
-SPI_SDI::PPSInSelect::Assign<SPI_SDI::PPSInSelect::Function::SDI2>();	// inputs can be assigned always
+SPI_SDI::PPSInSelect::Assign<SPI_SDI::PPSInSelect::Function::SDI2>();
 
 SPI_SDO::ConfigureAsOutput(false, false);	// make digital pin
 SPI_SDO::PPSOutSelect::Assign<SPI_SDO::PPSOutSelect::Function::SDO2>();
