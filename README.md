@@ -66,6 +66,8 @@ SPI_SDO::PPSOutSelect::Assign<SPI_SDO::PPSOutSelect::Function::SDO2>();
 
 ```
 
+# Reasons
+
 I've chosen to keep this low level becuase there are so many different ways to use peripherals
 it is difficult (expensive is time and space) to write generic drivers. This is why vendor libraries
 are painful in my experience.
@@ -76,4 +78,7 @@ for each use case I need.
 Of course these are trivial examples, but when it comes to serial peripherals with 6 instances on a chip or 
 a DMA controller with 8 channels, we can move around the allocated hardware just by changing a single typedef.
 
+Additionaly, there is no actual instances of classes, just types with static methods so there is essentially
+a zero overhead with this code. The compiler simply emits the appropriate register operations even on 
+the optimisation crippled free version of the xc32 compiler (with `-O1` flag)
 
