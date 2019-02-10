@@ -4,13 +4,13 @@ C++ Template driven peripheral library for the PIC32MZ
 
 This is part of a private project, I'm sharing this to allow feedback from the cpplang slack #embedded community
 
-Note that the compiler is limited C++11 features.
+Note that the compiler is limited to C++11 features.
 
 I'm no C++ expert and I'm sure I've not avoided all footguns. I'm sure others will have different and better ways to 
 achieve this, so I'm keen to get feedback. This is working in a commercial product, but there is always opportunity
-to imporove!
+to improve!
 
-# Usage
+## Usage
 
 The basic idea is that we define a type from the templates that specialises based on the the specific instace
 of a peripheral. Then in code we refer to this typedef and call static methods on it.
@@ -69,7 +69,7 @@ SPI_SDO::PPSOutSelect::Assign<SPI_SDO::PPSOutSelect::Function::SDO2>();
 
 ```
 
-# Reasons
+## Reasons
 
 I've chosen to keep this low level becuase there are so many different ways to use peripherals
 it is difficult (expensive is time and space) to write generic drivers. This is why vendor libraries
@@ -84,4 +84,15 @@ a DMA controller with 8 channels, we can move around the allocated hardware just
 Additionaly, there is no actual instances of classes, just types with static methods so there is essentially
 a zero overhead with this code. The compiler simply emits the appropriate register operations even on 
 the optimisation crippled free version of the xc32 compiler (with `-O1` flag)
+
+## Future
+
+In itself this just provides a C++ view of the underlying hardware, it would be useful to then build
+additional templates on top to implement specific useful abstractions. For instance a serial port, an I2C
+master and slave protocol driver etc. 
+
+These objects in the next layer may then be testable using unit tests and replacing the hardware abstraction with
+a specific test abstraction. 
+
+I'm still thinking about how to build this well.
 

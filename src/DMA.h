@@ -178,11 +178,6 @@ namespace Peripheral
 			static DMAChannelINTBits GetINTBits() { return INT; }
 			
 			// Set source address helper (will do physical address translation)
-		//	static void SetSourceAddress(void volatile * ptr) 
-		//	{
-		//		SSA.Value = KVA_TO_PA(ptr);
-		//	}
-			
 			static void SetSourceAddress(void const * ptr)
 			{
 				SSA.Value = KVA_TO_PA(ptr);
