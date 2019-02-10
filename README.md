@@ -6,6 +6,10 @@ This is part of a private project, I'm sharing this to allow feedback from the c
 
 Note that the compiler is limited C++11 features.
 
+I'm no C++ expert and I'm sure I've not avoided all footguns. I'm sure others will have different and better ways to 
+achieve this, so I'm keen to get feedback. This is working in a commercial product, but there is always opportunity
+to imporove!
+
 # Usage
 
 The basic idea is that we define a type from the templates that specialises based on the the specific instace
